@@ -10,18 +10,30 @@ This code takes text input files which were created from ProteoWizard 3.0 (https
 
 Data Transformation Steps:
 
-Working directory and text file name and location are specificText (.txt).
-Mandatory user-defined metadata (e.g., compound name and CAS) is manually entered.
-Optional user-defined information can be modified (e.g., predicted ion losses)
-Metadata from MS analysis text file and pubchem (https://pubchem.ncbi.nlm.nih.gov/) and classyfire (http://classyfire.wishartlab.com/about) are extracted and added to each scan metadata output.
-mz extracted from ms/ms scans are rounded to nearest dalton.
-Intensity data from ms/ms is scaled to % of highest peak, peaks below 1% are filtered out, and the data are then further binned into 10 bins (1-10, 11-20, 21-30, 31-40, 41-50, 51-60, 61-70, 71-80, 81-90, 91-100 %).
-Columns are created to represent every m/z considered between m/z 50-3500. This algorithm is meant for small molecule ms/ms data with charge state 1+, 2+ or 3+ possibilities.
-m/z columns are populated with % bin if an intensity for that ms/ms scan is found at that m/z. NaN values are denoted by 0.
-m/z columns are then concatenated to the user-defined and txt-file-defined metadata columns.
-Probable ESI adduct m/z are calculated and matched to selected ion m/z to putatively assign adduct identity. Filter set at +/- 0.01 Da for adduct calculation.
-Data scans are further filtered out based on 4 criteria: 1)most prominant ions are determined based on count and scans not containing these ions are removed. 2) m/z that is below a 4+ charge state are removed. 3) if an adduct is not identified for the selected ion m/z, scan is removed, and 4) if the predicted adduct contains atoms that are not in chemical formula of the compound analyzed, the scan is removed.
-Data table representing each ms/ms scan of probable intensities at each m/z value along with corresponding metadata are represented by each row.
+I. Working directory and text file name and location are specificText (.txt).
+
+II. User-defined metadata (e.g., compound name and CAS) is manually entered.
+
+III. Optional user-defined information can be modified (e.g., predicted ion losses)
+
+IV. Metadata from MS analysis text file and pubchem (https://pubchem.ncbi.nlm.nih.gov/) and classyfire (http://classyfire.wishartlab.com/about) are extracted and added to each scan metadata output.
+
+V. mz extracted from ms/ms scans are rounded to nearest dalton.
+
+VI. Intensity data from ms/ms is scaled to % of highest peak, peaks below 1% are filtered out, and the data are then further binned into 10 bins (1-10, 11-20, 21-30, 31-40, 41-50, 51-60, 61-70, 71-80, 81-90, 91-100 %).
+
+VII. Columns are created to represent every m/z considered between m/z 50-3500. This algorithm is meant for small molecule ms/ms data with charge state 1+, 2+ or 3+ possibilities.
+
+VIII. m/z columns are populated with % bin if an intensity for that ms/ms scan is found at that m/z. NaN values are denoted by 0.
+
+IX. m/z columns are then concatenated to the user-defined and txt-file-defined metadata columns.
+
+X. Probable ESI adduct m/z are calculated and matched to selected ion m/z to putatively assign adduct identity. Filter set at +/- 0.01 Da for adduct calculation.
+
+XI. Data scans are further filtered out based on 4 criteria: 1)most prominant ions are determined based on count and scans not containing these ions are removed. 2) m/z that is below a 4+ charge state are removed. 3) if an adduct is not identified for the selected ion m/z, scan is removed, and 4) if the predicted adduct contains atoms that are not in chemical formula of the compound analyzed, the scan is removed.
+
+XII. Data table representing each ms/ms scan of probable intensities at each m/z value along with corresponding metadata are represented by each row.
 Data table is saved as a .csv file to defined working directory folder.
-Analysis report showing total ion chromatogram, selected ion chromatogram, an elbow plot showing cutoff of prominant/characteristic ions used for selected ms/ms scans and a summary adduct table are saved to the working directory.
+
+XIII. Analysis report showing total ion chromatogram, selected ion chromatogram, an elbow plot showing cutoff of prominant/characteristic ions used for selected ms/ms scans and a summary adduct table are saved to the working directory.
 
